@@ -1,0 +1,26 @@
+<h1>Listing articles</h1>
+ <%= link_to 'Reload', articles_url %>
+ <br/>
+
+ <%= link_to 'Add a new record', new_article_url %>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Text</th>
+    <th>PUID</th>
+    <th>Actions</th>
+  </tr>
+ 
+  <% @articles.each do |article| %>
+    <tr>
+      <td><%= article.title %></td>
+      <td><%= article.text %></td>
+      <td><%= article.puid %></td>
+      <td><%= link_to 'Show', article_path(article) %></td>
+      <td><%= link_to 'Edit', edit_article_url(article) %></td>
+      <td><%= link_to 'Destroy', article_url(article),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
